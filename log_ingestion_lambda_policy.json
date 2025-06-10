@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "LambdaBasicExecution",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "S3ReadAccess",
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::YOUR_S3_BUCKET_NAME/*"
+        },
+        {
+            "Sid": "SNSPublishAccess",
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": "arn:aws:sns:YOUR_REGION:YOUR_ACCOUNT_ID:security-alerts"
+        },
+        {
+            "Sid": "SecretsManagerReadAccess",
+            "Effect": "Allow",
+            "Action": "secretsmanager:GetSecretValue",
+            "Resource": "arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret:prod/GeminiAPIKey-?????? "
+        },
+        {
+            "Sid": "LambdaInvokeAccess",
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "arn:aws:lambda:YOUR_REGION:YOUR_ACCOUNT_ID:function:remediation-lambda"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "LambdaBasicExecution",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "EC2SecurityGroupAccess",
+            "Effect": "Allow",
+            "Action": "ec2:RevokeSecurityGroupIngress",
+            "Resource": "arn:aws:ec2:YOUR_REGION:YOUR_ACCOUNT_ID:security-group/*"
+        }
+    ]
+}
